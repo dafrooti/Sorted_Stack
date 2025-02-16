@@ -17,16 +17,15 @@ class Stack():
             return self.stack[-1]
         else:
             print("Stack Empty")
-    def sortStack(self, sort):
-        temp = []
-        while sort:
-            x = sort.pop()
-            while len(temp) > 0:
-                if temp[-1] > x:
-                    sort.push(temp.pop())
-            temp.append(x)
-        while temp:
-            sort.push(temp.pop())
+    def sortStack(self):
+        temp = Stack(self.size)
+        while self.stack:
+            x = self.pop()
+            while temp.length() > 0 and temp.top() > x:
+                    self.push(temp.pop())
+            temp.push(x)
+        while temp.length() > 0:
+            self.push(temp.pop())
     def display(self):
         print(self.stack)
     def length(self):
@@ -39,13 +38,12 @@ stack.push(2)
 stack.push(3)
 stack.push(4)
 stack.push(7)
-print(stack.length())
+# print(stack.length())
 # stack.display()
 # stack.pop()
 # stack.display()
 # stack.clear()
 # stack.display()
 
-stack.sortStack(stack)
+stack.sortStack()
 stack.display()
-
